@@ -1,0 +1,679 @@
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{13C9B90B-693A-4091-8679-0A0E8A78AA06}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MultiShop</RootNamespace>
+    <AssemblyName>MultiShop</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44394</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.3\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.3\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.3\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=4.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.4.2.2\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=4.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.4.2.2\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.3.0.1\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.3.0.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Web.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.9\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.9\lib\net45\System.Web.Webpages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Deployment">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.9\lib\net45\System.Web.Webpages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.9\lib\net45\System.Web.Webpages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.9\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.2.0.1\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.9\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AdminLTE\bootstrap\css\bootstrap.css" />
+    <Content Include="AdminLTE\bootstrap\css\bootstrap.min.css" />
+    <Content Include="AdminLTE\bootstrap\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="AdminLTE\bootstrap\js\bootstrap.js" />
+    <Content Include="AdminLTE\bootstrap\js\bootstrap.min.js" />
+    <Content Include="AdminLTE\bootstrap\js\npm.js" />
+    <Content Include="AdminLTE\dist\css\AdminLTE.css" />
+    <Content Include="AdminLTE\dist\css\AdminLTE.min.css" />
+    <Content Include="AdminLTE\dist\css\skins\skin-black.css" />
+    <Content Include="AdminLTE\dist\css\skins\skin-black.min.css" />
+    <Content Include="AdminLTE\dist\css\skins\skin-blue.css" />
+    <Content Include="AdminLTE\dist\css\skins\skin-blue.min.css" />
+    <Content Include="AdminLTE\dist\css\skins\skin-green.css" />
+    <Content Include="AdminLTE\dist\css\skins\skin-green.min.css" />
+    <Content Include="AdminLTE\dist\css\skins\skin-purple.css" />
+    <Content Include="AdminLTE\dist\css\skins\skin-purple.min.css" />
+    <Content Include="AdminLTE\dist\css\skins\skin-red.css" />
+    <Content Include="AdminLTE\dist\css\skins\skin-red.min.css" />
+    <Content Include="AdminLTE\dist\css\skins\skin-yellow.css" />
+    <Content Include="AdminLTE\dist\css\skins\skin-yellow.min.css" />
+    <Content Include="AdminLTE\dist\css\skins\_all-skins.css" />
+    <Content Include="AdminLTE\dist\css\skins\_all-skins.min.css" />
+    <Content Include="AdminLTE\dist\img\avatar.png" />
+    <Content Include="AdminLTE\dist\img\avatar04.png" />
+    <Content Include="AdminLTE\dist\img\avatar2.png" />
+    <Content Include="AdminLTE\dist\img\avatar3.png" />
+    <Content Include="AdminLTE\dist\img\avatar5.png" />
+    <Content Include="AdminLTE\dist\img\boxed-bg.jpg" />
+    <Content Include="AdminLTE\dist\img\boxed-bg.png" />
+    <Content Include="AdminLTE\dist\img\credit\american-express.png" />
+    <Content Include="AdminLTE\dist\img\credit\cirrus.png" />
+    <Content Include="AdminLTE\dist\img\credit\mastercard.png" />
+    <Content Include="AdminLTE\dist\img\credit\mestro.png" />
+    <Content Include="AdminLTE\dist\img\credit\paypal.png" />
+    <Content Include="AdminLTE\dist\img\credit\paypal2.png" />
+    <Content Include="AdminLTE\dist\img\credit\visa.png" />
+    <Content Include="AdminLTE\dist\img\default-50x50.gif" />
+    <Content Include="AdminLTE\dist\img\icons.png" />
+    <Content Include="AdminLTE\dist\img\photo1.png" />
+    <Content Include="AdminLTE\dist\img\photo2.png" />
+    <Content Include="AdminLTE\dist\img\sprite-skin-flat.png" />
+    <Content Include="AdminLTE\dist\img\sprite-skin-nice.png" />
+    <Content Include="AdminLTE\dist\img\user1-128x128.jpg" />
+    <Content Include="AdminLTE\dist\img\user2-160x160.jpg" />
+    <Content Include="AdminLTE\dist\img\user3-128x128.jpg" />
+    <Content Include="AdminLTE\dist\img\user4-128x128.jpg" />
+    <Content Include="AdminLTE\dist\img\user5-128x128.jpg" />
+    <Content Include="AdminLTE\dist\img\user6-128x128.jpg" />
+    <Content Include="AdminLTE\dist\img\user7-128x128.jpg" />
+    <Content Include="AdminLTE\dist\img\user8-128x128.jpg" />
+    <Content Include="AdminLTE\dist\js\app.js" />
+    <Content Include="AdminLTE\dist\js\app.min.js" />
+    <Content Include="AdminLTE\dist\js\demo.js" />
+    <Content Include="AdminLTE\dist\js\pages\dashboard.js" />
+    <Content Include="AdminLTE\dist\js\pages\dashboard2.js" />
+    <Content Include="AdminLTE\Gruntfile.js" />
+    <Content Include="Content\bootstrap-grid.css" />
+    <Content Include="Content\bootstrap-grid.min.css" />
+    <Content Include="Content\bootstrap-reboot.css" />
+    <Content Include="Content\bootstrap-reboot.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\carousel-1.jpg" />
+    <Content Include="Content\Images\carousel-2.jpg" />
+    <Content Include="Content\Images\carousel-3.jpg" />
+    <Content Include="Content\Images\cat-1.jpg" />
+    <Content Include="Content\Images\cat-2.jpg" />
+    <Content Include="Content\Images\cat-3.jpg" />
+    <Content Include="Content\Images\cat-4.jpg" />
+    <Content Include="Content\Images\offer-1.jpg" />
+    <Content Include="Content\Images\offer-2.jpg" />
+    <Content Include="Content\Images\payments.png" />
+    <Content Include="Content\Images\product-1.jpg" />
+    <Content Include="Content\Images\product-2.jpg" />
+    <Content Include="Content\Images\product-3.jpg" />
+    <Content Include="Content\Images\product-4.jpg" />
+    <Content Include="Content\Images\product-5.jpg" />
+    <Content Include="Content\Images\product-6.jpg" />
+    <Content Include="Content\Images\product-7.jpg" />
+    <Content Include="Content\Images\product-8.jpg" />
+    <Content Include="Content\Images\product-9.jpg" />
+    <Content Include="Content\Images\user.jpg" />
+    <Content Include="Content\Images\vendor-1.jpg" />
+    <Content Include="Content\Images\vendor-2.jpg" />
+    <Content Include="Content\Images\vendor-3.jpg" />
+    <Content Include="Content\Images\vendor-4.jpg" />
+    <Content Include="Content\Images\vendor-5.jpg" />
+    <Content Include="Content\Images\vendor-6.jpg" />
+    <Content Include="Content\Images\vendor-7.jpg" />
+    <Content Include="Content\Images\vendor-8.jpg" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Content\WebSite\css\bootstrap-grid.css" />
+    <Content Include="Content\WebSite\css\bootstrap-grid.min.css" />
+    <Content Include="Content\WebSite\css\bootstrap-reboot.css" />
+    <Content Include="Content\WebSite\css\bootstrap-reboot.min.css" />
+    <Content Include="Content\WebSite\css\bootstrap.css" />
+    <Content Include="Content\WebSite\css\bootstrap.min.css" />
+    <Content Include="Content\WebSite\css\style.css" />
+    <Content Include="Content\WebSite\css\style.min.css" />
+    <Content Include="Content\WebSite\img\carousel-1.jpg" />
+    <Content Include="Content\WebSite\img\carousel-2.jpg" />
+    <Content Include="Content\WebSite\img\carousel-3.jpg" />
+    <Content Include="Content\WebSite\img\cat-1.jpg" />
+    <Content Include="Content\WebSite\img\cat-2.jpg" />
+    <Content Include="Content\WebSite\img\cat-3.jpg" />
+    <Content Include="Content\WebSite\img\cat-4.jpg" />
+    <Content Include="Content\WebSite\img\offer-1.jpg" />
+    <Content Include="Content\WebSite\img\offer-2.jpg" />
+    <Content Include="Content\WebSite\img\payments.png" />
+    <Content Include="Content\WebSite\img\product-1.jpg" />
+    <Content Include="Content\WebSite\img\product-2.jpg" />
+    <Content Include="Content\WebSite\img\product-3.jpg" />
+    <Content Include="Content\WebSite\img\product-4.jpg" />
+    <Content Include="Content\WebSite\img\product-5.jpg" />
+    <Content Include="Content\WebSite\img\product-6.jpg" />
+    <Content Include="Content\WebSite\img\product-7.jpg" />
+    <Content Include="Content\WebSite\img\product-8.jpg" />
+    <Content Include="Content\WebSite\img\product-9.jpg" />
+    <Content Include="Content\WebSite\img\user.jpg" />
+    <Content Include="Content\WebSite\img\vendor-1.jpg" />
+    <Content Include="Content\WebSite\img\vendor-2.jpg" />
+    <Content Include="Content\WebSite\img\vendor-3.jpg" />
+    <Content Include="Content\WebSite\img\vendor-4.jpg" />
+    <Content Include="Content\WebSite\img\vendor-5.jpg" />
+    <Content Include="Content\WebSite\img\vendor-6.jpg" />
+    <Content Include="Content\WebSite\img\vendor-7.jpg" />
+    <Content Include="Content\WebSite\img\vendor-8.jpg" />
+    <Content Include="Content\WebSite\js\main.js" />
+    <Content Include="Content\WebSite\lib\animate\animate.min.css" />
+    <Content Include="Content\WebSite\lib\easing\easing.js" />
+    <Content Include="Content\WebSite\lib\easing\easing.min.js" />
+    <Content Include="Content\WebSite\lib\owlcarousel\assets\ajax-loader.gif" />
+    <Content Include="Content\WebSite\lib\owlcarousel\assets\owl.carousel.css" />
+    <Content Include="Content\WebSite\lib\owlcarousel\assets\owl.carousel.min.css" />
+    <Content Include="Content\WebSite\lib\owlcarousel\assets\owl.theme.default.css" />
+    <Content Include="Content\WebSite\lib\owlcarousel\assets\owl.theme.default.min.css" />
+    <Content Include="Content\WebSite\lib\owlcarousel\assets\owl.theme.green.css" />
+    <Content Include="Content\WebSite\lib\owlcarousel\assets\owl.theme.green.min.css" />
+    <Content Include="Content\WebSite\lib\owlcarousel\assets\owl.video.play.png" />
+    <Content Include="Content\WebSite\lib\owlcarousel\owl.carousel.js" />
+    <Content Include="Content\WebSite\lib\owlcarousel\owl.carousel.min.js" />
+    <Content Include="Content\WebSite\mail\contact.js" />
+    <Content Include="Content\WebSite\mail\contact.php" />
+    <Content Include="Content\WebSite\mail\jqBootstrapValidation.min.js" />
+    <Content Include="Global.asax" />
+    <Content Include="Scripts\bootstrap.bundle.js" />
+    <Content Include="Scripts\bootstrap.bundle.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\esm\popper-utils.js" />
+    <Content Include="Scripts\esm\popper-utils.min.js" />
+    <Content Include="Scripts\esm\popper.js" />
+    <Content Include="Scripts\esm\popper.min.js" />
+    <Content Include="AdminLTE\bootstrap\css\bootstrap.css.map" />
+    <Content Include="AdminLTE\bootstrap\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="AdminLTE\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="AdminLTE\bootstrap\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="AdminLTE\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="AdminLTE\build\bootstrap-less\mixins.less" />
+    <Content Include="AdminLTE\build\bootstrap-less\mixins\alerts.less" />
+    <Content Include="AdminLTE\build\bootstrap-less\mixins\background-variant.less" />
+    <Content Include="AdminLTE\build\bootstrap-less\mixins\border-radius.less" />
+    <Content Include="AdminLTE\build\bootstrap-less\mixins\buttons.less" />
+    <Content Include="AdminLTE\build\bootstrap-less\mixins\center-block.less" />
+    <Content Include="AdminLTE\build\bootstrap-less\mixins\clearfix.less" />
+    <Content Include="AdminLTE\build\bootstrap-less\mixins\forms.less" />
+    <Content Include="AdminLTE\build\bootstrap-less\mixins\gradients.less" />
+    <Content Include="AdminLTE\build\bootstrap-less\mixins\grid-framework.less" />
+    <Content Include="AdminLTE\build\bootstrap-less\mixins\grid.less" />
+    <Content Include="AdminLTE\build\bootstrap-less\mixins\hide-text.less" />
+    <Content Include="AdminLTE\build\bootstrap-less\mixins\image.less" />
+    <Content Include="AdminLTE\build\bootstrap-less\mixins\labels.less" />
+    <Content Include="AdminLTE\build\bootstrap-less\mixins\list-group.less" />
+    <Content Include="AdminLTE\build\bootstrap-less\mixins\nav-divider.less" />
+    <Content Include="AdminLTE\build\bootstrap-less\mixins\nav-vertical-align.less" />
+    <Content Include="AdminLTE\build\bootstrap-less\mixins\opacity.less" />
+    <Content Include="AdminLTE\build\bootstrap-less\mixins\pagination.less" />
+    <Content Include="AdminLTE\build\bootstrap-less\mixins\panels.less" />
+    <Content Include="AdminLTE\build\bootstrap-less\mixins\progress-bar.less" />
+    <Content Include="AdminLTE\build\bootstrap-less\mixins\reset-filter.less" />
+    <Content Include="AdminLTE\build\bootstrap-less\mixins\resize.less" />
+    <Content Include="AdminLTE\build\bootstrap-less\mixins\responsive-visibility.less" />
+    <Content Include="AdminLTE\build\bootstrap-less\mixins\size.less" />
+    <Content Include="AdminLTE\build\bootstrap-less\mixins\tab-focus.less" />
+    <Content Include="AdminLTE\build\bootstrap-less\mixins\table-row.less" />
+    <Content Include="AdminLTE\build\bootstrap-less\mixins\text-emphasis.less" />
+    <Content Include="AdminLTE\build\bootstrap-less\mixins\text-overflow.less" />
+    <Content Include="AdminLTE\build\bootstrap-less\mixins\vendor-prefixes.less" />
+    <Content Include="AdminLTE\build\bootstrap-less\variables.less" />
+    <Content Include="AdminLTE\build\less\404_500_errors.less" />
+    <Content Include="AdminLTE\build\less\AdminLTE.less" />
+    <Content Include="AdminLTE\build\less\alerts.less" />
+    <Content Include="AdminLTE\build\less\bootstrap-social.less" />
+    <Content Include="AdminLTE\build\less\boxes.less" />
+    <Content Include="AdminLTE\build\less\buttons.less" />
+    <Content Include="AdminLTE\build\less\callout.less" />
+    <Content Include="AdminLTE\build\less\carousel.less" />
+    <Content Include="AdminLTE\build\less\core.less" />
+    <Content Include="AdminLTE\build\less\direct-chat.less" />
+    <Content Include="AdminLTE\build\less\dropdown.less" />
+    <Content Include="AdminLTE\build\less\forms.less" />
+    <Content Include="AdminLTE\build\less\fullcalendar.less" />
+    <Content Include="AdminLTE\build\less\header.less" />
+    <Content Include="AdminLTE\build\less\info-box.less" />
+    <Content Include="AdminLTE\build\less\invoice.less" />
+    <Content Include="AdminLTE\build\less\labels.less" />
+    <Content Include="AdminLTE\build\less\lockscreen.less" />
+    <Content Include="AdminLTE\build\less\login_and_register.less" />
+    <Content Include="AdminLTE\build\less\mailbox.less" />
+    <Content Include="AdminLTE\build\less\miscellaneous.less" />
+    <Content Include="AdminLTE\build\less\mixins.less" />
+    <Content Include="AdminLTE\build\less\modal.less" />
+    <Content Include="AdminLTE\build\less\navs.less" />
+    <Content Include="AdminLTE\build\less\products.less" />
+    <Content Include="AdminLTE\build\less\progress-bars.less" />
+    <Content Include="AdminLTE\build\less\sidebar.less" />
+    <Content Include="AdminLTE\build\less\skins\skin-black.less" />
+    <Content Include="AdminLTE\build\less\skins\skin-blue.less" />
+    <Content Include="AdminLTE\build\less\skins\skin-green.less" />
+    <Content Include="AdminLTE\build\less\skins\skin-purple.less" />
+    <Content Include="AdminLTE\build\less\skins\skin-red.less" />
+    <Content Include="AdminLTE\build\less\skins\skin-yellow.less" />
+    <Content Include="AdminLTE\build\less\skins\_all-skins.less" />
+    <Content Include="AdminLTE\build\less\small-box.less" />
+    <Content Include="AdminLTE\build\less\table.less" />
+    <Content Include="AdminLTE\build\less\timeline.less" />
+    <Content Include="AdminLTE\build\less\users-list.less" />
+    <Content Include="AdminLTE\build\less\variables.less" />
+    <Content Include="AdminLTE\changelog" />
+    <Content Include="AdminLTE\composer.json" />
+    <Content Include="AdminLTE\package.json" />
+    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.4.1.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <Content Include="Scripts\popper-utils.js" />
+    <Content Include="Scripts\popper-utils.min.js" />
+    <Content Include="Scripts\popper.js" />
+    <Content Include="Scripts\popper.min.js" />
+    <Content Include="Scripts\src\index.js" />
+    <Content Include="Scripts\src\methods\defaults.js" />
+    <Content Include="Scripts\src\methods\destroy.js" />
+    <Content Include="Scripts\src\methods\disableEventListeners.js" />
+    <Content Include="Scripts\src\methods\enableEventListeners.js" />
+    <Content Include="Scripts\src\methods\placements.js" />
+    <Content Include="Scripts\src\methods\update.js" />
+    <Content Include="Scripts\src\modifiers\applyStyle.js" />
+    <Content Include="Scripts\src\modifiers\arrow.js" />
+    <Content Include="Scripts\src\modifiers\computeStyle.js" />
+    <Content Include="Scripts\src\modifiers\flip.js" />
+    <Content Include="Scripts\src\modifiers\hide.js" />
+    <Content Include="Scripts\src\modifiers\index.js" />
+    <Content Include="Scripts\src\modifiers\inner.js" />
+    <Content Include="Scripts\src\modifiers\keepTogether.js" />
+    <Content Include="Scripts\src\modifiers\offset.js" />
+    <Content Include="Scripts\src\modifiers\preventOverflow.js" />
+    <Content Include="Scripts\src\modifiers\shift.js" />
+    <Content Include="Scripts\src\utils\clockwise.js" />
+    <Content Include="Scripts\src\utils\computeAutoPlacement.js" />
+    <Content Include="Scripts\src\utils\debounce.js" />
+    <Content Include="Scripts\src\utils\find.js" />
+    <Content Include="Scripts\src\utils\findCommonOffsetParent.js" />
+    <Content Include="Scripts\src\utils\findIndex.js" />
+    <Content Include="Scripts\src\utils\getBordersSize.js" />
+    <Content Include="Scripts\src\utils\getBoundaries.js" />
+    <Content Include="Scripts\src\utils\getBoundingClientRect.js" />
+    <Content Include="Scripts\src\utils\getClientRect.js" />
+    <Content Include="Scripts\src\utils\getFixedPositionOffsetParent.js" />
+    <Content Include="Scripts\src\utils\getOffsetParent.js" />
+    <Content Include="Scripts\src\utils\getOffsetRect.js" />
+    <Content Include="Scripts\src\utils\getOffsetRectRelativeToArbitraryNode.js" />
+    <Content Include="Scripts\src\utils\getOppositePlacement.js" />
+    <Content Include="Scripts\src\utils\getOppositeVariation.js" />
+    <Content Include="Scripts\src\utils\getOuterSizes.js" />
+    <Content Include="Scripts\src\utils\getParentNode.js" />
+    <Content Include="Scripts\src\utils\getPopperOffsets.js" />
+    <Content Include="Scripts\src\utils\getReferenceNode.js" />
+    <Content Include="Scripts\src\utils\getReferenceOffsets.js" />
+    <Content Include="Scripts\src\utils\getRoot.js" />
+    <Content Include="Scripts\src\utils\getRoundedOffsets.js" />
+    <Content Include="Scripts\src\utils\getScroll.js" />
+    <Content Include="Scripts\src\utils\getScrollParent.js" />
+    <Content Include="Scripts\src\utils\getStyleComputedProperty.js" />
+    <Content Include="Scripts\src\utils\getSupportedPropertyName.js" />
+    <Content Include="Scripts\src\utils\getViewportOffsetRectRelativeToArtbitraryNode.js" />
+    <Content Include="Scripts\src\utils\getWindow.js" />
+    <Content Include="Scripts\src\utils\getWindowSizes.js" />
+    <Content Include="Scripts\src\utils\includeScroll.js" />
+    <Content Include="Scripts\src\utils\index.js" />
+    <Content Include="Scripts\src\utils\isBrowser.js" />
+    <Content Include="Scripts\src\utils\isFixed.js" />
+    <Content Include="Scripts\src\utils\isFunction.js" />
+    <Content Include="Scripts\src\utils\isIE.js" />
+    <Content Include="Scripts\src\utils\isModifierEnabled.js" />
+    <Content Include="Scripts\src\utils\isModifierRequired.js" />
+    <Content Include="Scripts\src\utils\isNumeric.js" />
+    <Content Include="Scripts\src\utils\isOffsetContainer.js" />
+    <Content Include="Scripts\src\utils\removeEventListeners.js" />
+    <Content Include="Scripts\src\utils\runModifiers.js" />
+    <Content Include="Scripts\src\utils\setAttributes.js" />
+    <Content Include="Scripts\src\utils\setStyles.js" />
+    <Content Include="Scripts\src\utils\setupEventListeners.js" />
+    <Content Include="Scripts\umd\popper-utils.js" />
+    <Content Include="Scripts\umd\popper-utils.min.js" />
+    <Content Include="Scripts\umd\popper.js" />
+    <Content Include="Scripts\umd\popper.min.js" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup1.cs" />
+    <Compile Include="Contexts\DataContext.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CartController.cs" />
+    <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\ProductDetailController.cs" />
+    <Compile Include="Entity\Order.cs" />
+    <Compile Include="Entity\Category.cs" />
+    <Compile Include="Entity\Product.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Identity\ApplicationRole.cs" />
+    <Compile Include="Identity\ApplicationUser.cs" />
+    <Compile Include="Identity\IdentityDataContext.cs" />
+    <Compile Include="Identity\IdentityInitializer.cs" />
+    <Compile Include="Models\Cart.cs" />
+    <Compile Include="Models\CategoryModel.cs" />
+    <Compile Include="Models\ChangePasswordModel.cs" />
+    <Compile Include="Models\Login.cs" />
+    <Compile Include="Models\Register.cs" />
+    <Compile Include="Models\ShippingDetail.cs" />
+    <Compile Include="Models\UserProfile.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\web.config" />
+    <Content Include="Content\bootstrap-grid.css.map" />
+    <Content Include="Content\bootstrap-grid.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.css.map" />
+    <Content Include="Content\bootstrap-reboot.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\WebSite\lib\owlcarousel\LICENSE" />
+    <Content Include="Content\WebSite\scss\bootstrap\scss\bootstrap-grid.scss" />
+    <Content Include="Content\WebSite\scss\bootstrap\scss\bootstrap-reboot.scss" />
+    <Content Include="Content\WebSite\scss\bootstrap\scss\bootstrap.scss" />
+    <Content Include="Content\WebSite\scss\bootstrap\scss\mixins\_alert.scss" />
+    <Content Include="Content\WebSite\scss\bootstrap\scss\mixins\_background-variant.scss" />
+    <Content Include="Content\WebSite\scss\bootstrap\scss\mixins\_badge.scss" />
+    <Content Include="Content\WebSite\scss\bootstrap\scss\mixins\_border-radius.scss" />
+    <Content Include="Content\WebSite\scss\bootstrap\scss\mixins\_box-shadow.scss" />
+    <Content Include="Content\WebSite\scss\bootstrap\scss\mixins\_breakpoints.scss" />
+    <Content Include="Content\WebSite\scss\bootstrap\scss\mixins\_buttons.scss" />
+    <Content Include="Content\WebSite\scss\bootstrap\scss\mixins\_caret.scss" />
+    <Content Include="Content\WebSite\scss\bootstrap\scss\mixins\_clearfix.scss" />
+    <Content Include="Content\WebSite\scss\bootstrap\scss\mixins\_deprecate.scss" />
+    <Content Include="Content\WebSite\scss\bootstrap\scss\mixins\_float.scss" />
+    <Content Include="Content\WebSite\scss\bootstrap\scss\mixins\_forms.scss" />
+    <Content Include="Content\WebSite\scss\bootstrap\scss\mixins\_gradients.scss" />
+    <Content Include="Content\WebSite\scss\bootstrap\scss\mixins\_grid-framework.scss" />
+    <Content Include="Content\WebSite\scss\bootstrap\scss\mixins\_grid.scss" />
+    <Content Include="Content\WebSite\scss\bootstrap\scss\mixins\_hover.scss" />
+    <Content Include="Content\WebSite\scss\bootstrap\scss\mixins\_image.scss" />
+    <Content Include="Content\WebSite\scss\bootstrap\scss\mixins\_list-group.scss" />
+    <Content Include="Content\WebSite\scss\bootstrap\scss\mixins\_lists.scss" />
+    <Content Include="Content\WebSite\scss\bootstrap\scss\mixins\_nav-divider.scss" />
+    <Content Include="Content\WebSite\scss\bootstrap\scss\mixins\_pagination.scss" />
+    <Content Include="Content\WebSite\scss\bootstrap\scss\mixins\_reset-text.scss" />
+    <Content Include="Content\WebSite\scss\bootstrap\scss\mixins\_resize.scss" />
+    <Content Include="Content\WebSite\scss\bootstrap\scss\mixins\_screen-reader.scss" />
+    <Content Include="Content\WebSite\scss\bootstrap\scss\mixins\_size.scss" />
+    <Content Include="Content\WebSite\scss\bootstrap\scss\mixins\_table-row.scss" />
+    <Content Include="Content\WebSite\scss\bootstrap\scss\mixins\_text-emphasis.scss" />
+    <Content Include="Content\WebSite\scss\bootstrap\scss\mixins\_text-hide.scss" />
+    <Content Include="Content\WebSite\scss\bootstrap\scss\mixins\_text-truncate.scss" />
+    <Content Include="Content\WebSite\scss\bootstrap\scss\mixins\_transition.scss" />
+    <Content Include="Content\WebSite\scss\bootstrap\scss\mixins\_visibility.scss" />
+    <Content Include="Content\WebSite\scss\bootstrap\scss\utilities\_align.scss" />
+    <Content Include="Content\WebSite\scss\bootstrap\scss\utilities\_background.scss" />
+    <Content Include="Content\WebSite\scss\bootstrap\scss\utilities\_borders.scss" />
+    <Content Include="Content\WebSite\scss\bootstrap\scss\utilities\_clearfix.scss" />
+    <Content Include="Content\WebSite\scss\bootstrap\scss\utilities\_display.scss" />
+    <Content Include="Content\WebSite\scss\bootstrap\scss\utilities\_embed.scss" />
+    <Content Include="Content\WebSite\scss\bootstrap\scss\utilities\_flex.scss" />
+    <Content Include="Content\WebSite\scss\bootstrap\scss\utilities\_float.scss" />
+    <Content Include="Content\WebSite\scss\bootstrap\scss\utilities\_interactions.scss" />
+    <Content Include="Content\WebSite\scss\bootstrap\scss\utilities\_overflow.scss" />
+    <Content Include="Content\WebSite\scss\bootstrap\scss\utilities\_position.scss" />
+    <Content Include="Content\WebSite\scss\bootstrap\scss\utilities\_screenreaders.scss" />
+    <Content Include="Content\WebSite\scss\bootstrap\scss\utilities\_shadows.scss" />
+    <Content Include="Content\WebSite\scss\bootstrap\scss\utilities\_sizing.scss" />
+    <Content Include="Content\WebSite\scss\bootstrap\scss\utilities\_spacing.scss" />
+    <Content Include="Content\WebSite\scss\bootstrap\scss\utilities\_stretched-link.scss" />
+    <Content Include="Content\WebSite\scss\bootstrap\scss\utilities\_text.scss" />
+    <Content Include="Content\WebSite\scss\bootstrap\scss\utilities\_visibility.scss" />
+    <Content Include="Content\WebSite\scss\bootstrap\scss\vendor\_rfs.scss" />
+    <Content Include="Content\WebSite\scss\bootstrap\scss\_alert.scss" />
+    <Content Include="Content\WebSite\scss\bootstrap\scss\_badge.scss" />
+    <Content Include="Content\WebSite\scss\bootstrap\scss\_breadcrumb.scss" />
+    <Content Include="Content\WebSite\scss\bootstrap\scss\_button-group.scss" />
+    <Content Include="Content\WebSite\scss\bootstrap\scss\_buttons.scss" />
+    <Content Include="Content\WebSite\scss\bootstrap\scss\_card.scss" />
+    <Content Include="Content\WebSite\scss\bootstrap\scss\_carousel.scss" />
+    <Content Include="Content\WebSite\scss\bootstrap\scss\_close.scss" />
+    <Content Include="Content\WebSite\scss\bootstrap\scss\_code.scss" />
+    <Content Include="Content\WebSite\scss\bootstrap\scss\_custom-forms.scss" />
+    <Content Include="Content\WebSite\scss\bootstrap\scss\_dropdown.scss" />
+    <Content Include="Content\WebSite\scss\bootstrap\scss\_forms.scss" />
+    <Content Include="Content\WebSite\scss\bootstrap\scss\_functions.scss" />
+    <Content Include="Content\WebSite\scss\bootstrap\scss\_grid.scss" />
+    <Content Include="Content\WebSite\scss\bootstrap\scss\_images.scss" />
+    <Content Include="Content\WebSite\scss\bootstrap\scss\_input-group.scss" />
+    <Content Include="Content\WebSite\scss\bootstrap\scss\_jumbotron.scss" />
+    <Content Include="Content\WebSite\scss\bootstrap\scss\_list-group.scss" />
+    <Content Include="Content\WebSite\scss\bootstrap\scss\_media.scss" />
+    <Content Include="Content\WebSite\scss\bootstrap\scss\_mixins.scss" />
+    <Content Include="Content\WebSite\scss\bootstrap\scss\_modal.scss" />
+    <Content Include="Content\WebSite\scss\bootstrap\scss\_nav.scss" />
+    <Content Include="Content\WebSite\scss\bootstrap\scss\_navbar.scss" />
+    <Content Include="Content\WebSite\scss\bootstrap\scss\_pagination.scss" />
+    <Content Include="Content\WebSite\scss\bootstrap\scss\_popover.scss" />
+    <Content Include="Content\WebSite\scss\bootstrap\scss\_print.scss" />
+    <Content Include="Content\WebSite\scss\bootstrap\scss\_progress.scss" />
+    <Content Include="Content\WebSite\scss\bootstrap\scss\_reboot.scss" />
+    <Content Include="Content\WebSite\scss\bootstrap\scss\_root.scss" />
+    <Content Include="Content\WebSite\scss\bootstrap\scss\_spinners.scss" />
+    <Content Include="Content\WebSite\scss\bootstrap\scss\_tables.scss" />
+    <Content Include="Content\WebSite\scss\bootstrap\scss\_toasts.scss" />
+    <Content Include="Content\WebSite\scss\bootstrap\scss\_tooltip.scss" />
+    <Content Include="Content\WebSite\scss\bootstrap\scss\_transitions.scss" />
+    <Content Include="Content\WebSite\scss\bootstrap\scss\_type.scss" />
+    <Content Include="Content\WebSite\scss\bootstrap\scss\_utilities.scss" />
+    <Content Include="Content\WebSite\scss\bootstrap\scss\_variables.scss" />
+    <Content Include="Content\WebSite\scss\style.scss" />
+    <None Include="packages.config" />
+    <Content Include="Views\Contact\Index.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Scripts\bootstrap.bundle.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.min.js.map" />
+    <Content Include="Scripts\bootstrap.js.map" />
+    <Content Include="Scripts\bootstrap.min.js.map" />
+    <Content Include="Scripts\esm\popper-utils.js.map" />
+    <Content Include="Scripts\esm\popper-utils.min.js.map" />
+    <Content Include="Scripts\esm\popper.js.map" />
+    <Content Include="Scripts\esm\popper.min.js.map" />
+    <Content Include="Scripts\index.js.flow" />
+    <Content Include="Scripts\jquery-3.4.1.min.map" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
+    <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Scripts\popper-utils.min.js.map" />
+    <Content Include="Scripts\popper.js.map" />
+    <Content Include="Scripts\popper.min.js.map" />
+    <Content Include="Scripts\README.md" />
+    <Content Include="Scripts\umd\popper-utils.js.map" />
+    <Content Include="Scripts\umd\popper-utils.min.js.map" />
+    <Content Include="Scripts\umd\popper.js.flow" />
+    <Content Include="Scripts\umd\popper.js.map" />
+    <Content Include="Scripts\umd\popper.min.js.map" />
+    <Content Include="Views\ProductDetail\Index.cshtml" />
+    <Content Include="Views\Home\Product.cshtml" />
+    <Content Include="Views\Home\ProductDetail.cshtml" />
+    <Content Include="Views\Shared\_AdminLayout.cshtml" />
+    <Content Include="Views\Category\Create.cshtml" />
+    <Content Include="Views\Category\Delete.cshtml" />
+    <Content Include="Views\Category\Details.cshtml" />
+    <Content Include="Views\Category\Edit.cshtml" />
+    <Content Include="Views\Category\Index.cshtml" />
+    <Content Include="Views\Product\Create.cshtml" />
+    <Content Include="Views\Product\Delete.cshtml" />
+    <Content Include="Views\Product\Details.cshtml" />
+    <Content Include="Views\Product\Edit.cshtml" />
+    <Content Include="Views\Product\Index.cshtml" />
+    <Content Include="Views\Category\_CategoryList.cshtml" />
+    <Content Include="Views\Home\ProductList.cshtml" />
+    <Content Include="Views\Home\_FeaturedProductList.cshtml" />
+    <Content Include="Views\Home\_Slider.cshtml" />
+    <Content Include="Views\Home\Search.cshtml" />
+    <Content Include="Views\Shared\_Search.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Shared\LoginPartial.cshtml" />
+    <Content Include="Views\Cart\Index.cshtml" />
+    <Content Include="Views\Cart\Summary.cshtml" />
+    <Content Include="Views\Cart\Checkout.cshtml" />
+    <Content Include="Views\Cart\OrderCompleted.cshtml" />
+    <Content Include="Views\Account\UserProfil.cshtml" />
+    <Content Include="Views\Account\ChangePassword.cshtml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Content\Panel\" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="Scripts\index.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>51475</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44394/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

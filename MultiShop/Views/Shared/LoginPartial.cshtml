@@ -1,0 +1,54 @@
+﻿@*<ul class="nav pull-right">
+        @if (Request.IsAuthenticated)
+        {
+            if (this.User.IsInRole("admin"))
+            {
+                <li><a href="/Product/Index" target="_blank" class="icon-user">Admin Panel</a></li>
+                <li><a href="/Account/UserProfil" target="_blank" class="icon-user">My Profile</a></li>
+                <li><a href="/Account/Index" target="_blank" class="icon-user">@User.Identity.Name</a></li>
+
+                <li class="label-warning"><a href="/Account/Logout" target="_blank" class="icon-user">Exit</a></li>
+            }
+            else
+            {
+                <li><a href="/Account/UserProfil" target="_blank" class="icon-user">My Profile</a></li>
+                <li><a href="/Account/Index" target="_blank" class="icon-user">@User.Identity.Name</a></li>
+                <li class="label-warning"><a href="/Account/Logout" target="_blank" class="icon-user">Exit</a></li>
+            }
+        }
+        else
+        {
+            <li class="label-warning"><a href="/Account/Register">Sign Up</a></li>
+            <li class="label-success"><a href="/Account/Login">Sign In</a></li>
+        }
+
+    </ul>*@
+
+
+@if (Request.IsAuthenticated)
+{
+    if (this.User.IsInRole("admin"))
+    {
+        <button class="dropdown-item" type="button">@User.Identity.Name</button>
+        <button class="dropdown-item" type="button"><a href="/Product/Index">Admin Panel</a> </button>
+        <button class="dropdown-item" type="button"><a href="/Account/UserProfil">My Profile</a> </button>
+
+        <button class="dropdown-item btn-warning" type="button"><a href="/Account/Logout">Exit</a> </button>
+    }
+    else
+    {
+        <button class="dropdown-item" type="button">@User.Identity.Name</button>
+        <button class="dropdown-item" type="button"><a href="/Account/Index">My Profile</a> </button>
+        
+        <button class="dropdown-item btn-warning" type="button"><a href="/Account/Logout">Exit</a> </button>
+    }
+}
+else
+{
+    <button class="dropdown-item" type="button"><a href="/Account/Register">Sign in</a> </button>
+    <button class="dropdown-item" type="button"><a href="/Account/Login">Sign up</a> </button>
+}
+
+
+
+
